@@ -62,7 +62,7 @@
           </div>
 
           <div class="mb-3">
-                <input type="submit" name="btn_agregar" id="btn_agregar" class="btn btn-primary" value="agregar">
+                <input type="submit" name="btn_eliminar" id="btn_eliminar" class="btn btn-primary" value="agregar">
             </div>
           </div>
    
@@ -131,6 +131,21 @@
         }
     }  
 ?>
+  
+ 
+<?php
+if (isset($_get["btn_eliminar"]))  {
+include_once("conexion_parcial.php");
+if($_REQUEST['estudiante']) {
+	$sql = "DELETE FROM estudiante WHERE id='".$_REQUEST['estudiante']."'";
+	$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));	
+	if($resultset) {
+		echo "Registro Borrado";
+	}
+}
+?> 
+  
+  
   <header>
     <!-- place navbar here -->
   </header>
